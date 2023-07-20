@@ -1,0 +1,24 @@
+name: Checkout Private Repo Remotely
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_out_private_repo:
+    name: Checkout private repo remotely
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout private repo remotely
+        uses: actions/checkout@v2
+        with:
+          repository: ICT-CET-Activities/hiddenRepo
+          path: <folder of choice>
+          token: ${{ secrets.TOPSECRETTOKEN }}
+
+      - name: Show hidden files
+        run: |
+          cd <folder of choice>
+          ls
